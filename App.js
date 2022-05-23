@@ -32,12 +32,12 @@ export default function App() {
 
   const renderPokemon = ({ item }) => {
     return (
-      <View style={{ backgroundColor: "lightgrey", marginTop: 10 }}>
-        <Text style={{ fontSize: 32, alignSelf: "center", marginTop: 10 }}>
+      <View style={styles.pokemonContainer}>
+        <Text style={styles.pokemonTitle}>
           {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
         </Text>
         <Image
-          style={{ width: 200, height: 200, alignSelf: "center" }}
+          style={styles.pokemonSprite}
           source={{
             uri: item.sprites.front_default,
           }}
@@ -48,11 +48,8 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text style={{ fontSize: 38, alignSelf: "center", marginBottom: 20 }}>
-        First Gen Pokemons
-      </Text>
+      <Text style={styles.title}>First Gen Pokemons</Text>
       <FlatList data={firstGenPokemonDetails} renderItem={renderPokemon} />
-
       <StatusBar style="auto" />
     </View>
   );
@@ -64,5 +61,20 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     marginTop: 60,
   },
-  pokemonContainer: {},
+  title: {
+    fontSize: 38,
+    alignSelf: "center",
+    marginBottom: 20,
+  },
+  pokemonContainer: { backgroundColor: "lightgrey", marginTop: 10 },
+  pokemonTitle: {
+    fontSize: 32,
+    alignSelf: "center",
+    marginTop: 10,
+  },
+  pokemonSprite: {
+    width: 200,
+    height: 200,
+    alignSelf: "center",
+  },
 });
